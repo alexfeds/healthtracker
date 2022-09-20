@@ -1,4 +1,5 @@
 import models.User
+import utils.Utils
 
 var user = User()
 
@@ -9,30 +10,17 @@ fun main() {
 
 fun addUser() {
     println("Please enter the following for the user")
-    print("Name:")
-    user.name = readLine()!!
-    print("Email:")
-    user.email = readLine()!!
+    user.name = Utils.getAndValidateName()
+    user.email = Utils.getAndValidateEmail()
     print("Id:")
     user.id = readLine()?.toIntOrNull() ?: -1
     print("Weight:")
     user.weight = readLine()?.toDoubleOrNull() ?: 0.0
     print("Height:")
     user.height = readLine()?.toFloatOrNull() ?: 0.0F
-    getAndValidateGender()
-}
+    user.gender = Utils.getAndValidateGender()
 
-fun getAndValidateGender() {
-    var gender: Char
-    do {
-        print("Gender:")
-        gender = readLine()?.getOrNull(0) ?: ' '.uppercaseChar()
-        when (gender) {
-            !in listOf('F', 'M') -> println("Valid Options are F and M")
-            in listOf('F', 'M') -> user.gender = gender
-            else -> print("Invalid option")
-        }
-    } while (gender !in listOf('F', 'M'))
+
 }
 
 fun listUser() {
