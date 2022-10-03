@@ -33,7 +33,6 @@ object Utils {
         print("Email:")
         val result = readLine()!!
         val isNotEmptyInput: Boolean = checkIfVarIsEmpty(result)
-
         val isValidEmail: Boolean = isValidEmail(result)
         if (isNotEmptyInput && isValidEmail) {
             return result
@@ -44,7 +43,7 @@ object Utils {
     }
 
     private fun checkIfVarIsEmpty(input: Any): Boolean {
-        if (input == null || input == "") {
+        if (input === null || input === "") {
             println("Cannot leave empty")
             return false
         } else {
@@ -60,7 +59,6 @@ object Utils {
         } else {
             return true
         }
-
     }
 
     private val EMAIL_ADDRESS_PATTERN = Pattern.compile(
@@ -72,5 +70,4 @@ object Utils {
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                 ")+"
     )
-
 }
